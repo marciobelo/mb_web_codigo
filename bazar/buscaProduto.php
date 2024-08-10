@@ -1,11 +1,11 @@
 <?php
-$banco_em_memoria = array(
-    1 => array(
+$banco_em_memoria = [
+    1 => [
         "descricao" => "Marreta Para Quebrar Concreto",
         "preco" => 123.45
-    )
+    ],
     // imagine centenas de produtos aqui!
-);
+];
 
 $codigo = filter_input( INPUT_GET, "codigo", FILTER_SANITIZE_NUMBER_INT);
 
