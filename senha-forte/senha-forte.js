@@ -7,4 +7,11 @@ $(function() {
         $("#LoginAoMenos6Nok").css({display: 'none'});
 
     });
+
+    $("input").keyup(function() {
+
+        console.log($("#login").val());
+        console.log($("#novaSenha").val());
+        console.log($("#repitaSenha").val());
+    });
 });
