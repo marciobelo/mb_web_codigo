@@ -5,7 +5,7 @@ $(function() {
 
         $.ajax({
             type: "GET",
-            url: "buscaProduto.php",
+            url: "/bazar/buscaProduto.php",
             data: { codigo },
             success: (result,status) => {
                 console.log(result);
