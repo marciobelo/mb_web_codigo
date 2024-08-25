@@ -1,0 +1,15 @@
+{
+    "name": "mbelo/bazar",
+    "autoload": {
+        "psr-4": {
+            "Mbelo\\Bazar\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "Márcio Belo",
+            "email": "marcio.belo@faeterj-rio.edu.br"
+        }
+    ],
+    "require": {}
+}
