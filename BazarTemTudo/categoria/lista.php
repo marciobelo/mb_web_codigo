@@ -32,6 +32,7 @@
                 <tr>
                     <th>Nome</th>
                     <th>ID</th>
+                    <th>Ações</th>
                 </tr>
             </thead>
             <tbody id="corpoTabela">
@@ -55,6 +56,33 @@
         </div>
         </div>
     </div>
+
+    <!-- Modal -->
+    <div class="modal fade" id="modalAlteracao" tabindex="-1" aria-labelledby="modalAlteracaoLabel" aria-hidden="true">
+        <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+            <h1 class="modal-title fs-5" id="modalAlteracaoLabel">Alterar Categoria</h1>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <input type="hidden" id="idCategoriaParaAlterar" />
+                <form>
+                    <div class="form-group">
+                        <label for="descricaoParaAlterar" class="col-form-label">Descrição:</label>
+                        <input type="text" class="form-control" id="descricaoParaAlterar">
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+            <button id="alterar" type="button" class="btn btn-primary" data-bs-dismiss="modal">Alterar</button>
+            <button type="button" class="btn" data-bs-dismiss="modal">Cancelar</button>
+            </div>
+        </div>
+        </div>
+    </div>
     
+
+
 </body>
 </html>

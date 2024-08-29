@@ -15,8 +15,7 @@ $(function() {
             // Carregar miolo da tabela com os dados
             const categorias = JSON.parse(data);
             categorias.forEach(categoria => {
-                $("<tr><td>" + categoria.descricao + "</td><td>" + categoria.id_categoria + "</td></tr>")
-                    .appendTo($("#corpoTabela"));
+                adicionarLinhaNaTabela(categoria);
             });
         },
         error: (xhr,status,error) => {
@@ -39,8 +38,7 @@ $(function() {
             success: data => {
                 $("#descricao").val("");
                 const categoria = JSON.parse(data);
-                $("<tr><td>" + categoria.descricao + "</td><td>" + categoria.id_categoria + "</td></tr>")
-                    .appendTo($("#corpoTabela"));
+                adicionarLinhaNaTabela(categoria);
                 $("#mensagemModal").html("Categoria adicionada com sucesso!");
                 modal.show();                           
             },
@@ -50,4 +48,37 @@ $(function() {
             }
         });
     });
+
+    $("#alterar").click(() => {
+        const id_categoria = $("#idCategoriaParaAlterar").val();
+        const descricao = $("#descricaoParaAlterar").val();
+        $.ajax({
+            type: "POST",
+            url: "/BazarTemTudo/categoria/alterar.php",
+            data: { id_categoria, descricao },
+            success: data => {
+                $("#categoria_descricao_" + id_categoria).html(descricao);
+                $("#mensagemModal").html("Categoria alterada com sucesso!");
+                modal.show();                            
+            },
+            error: (xhr,status,error) => {
+                $("#mensagemModal").html("Erro ao alterar categoria!");
+                modal.show();                           
+            }
+        });
+    });
 });
+
+function iniciarAlterar(id,descricao) {
+    $("#idCategoriaParaAlterar").val(id);
+    $("#descricaoParaAlterar").val(descricao);
+    const modal = new bootstrap.Modal('#modalAlteracao', {});
+    modal.show();
+}
+
+function adicionarLinhaNaTabela(categoria) {
+    $("<tr><td id='categoria_descricao_" + categoria.id_categoria + "'>" + 
+        categoria.descricao + "</td><td>" + categoria.id_categoria + "</td>" +
+        "<td><button onclick='iniciarAlterar(" + categoria.id_categoria + ",\"" + categoria.descricao 
+        + "\")'>Alterar</button></td></tr>").appendTo($("#corpoTabela"));
+}
